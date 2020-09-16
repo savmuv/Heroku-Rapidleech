@@ -1,14 +1,16 @@
 FROM php:5.6-apache
-
-# Installing packages
 RUN apt-get update && \
-    apt-get install -y python-pip libnet1 libnet1-dev libpcap0.8 libpcap0.8-dev git wget apache2 curl
+    apt-get install -y python-pip libnet1 libnet1-dev libpcap0.8 libpcap0.8-dev libmcrypt-dev git wget
 
-# Cloning git repository
-RUN git clone https://github.com/Th3-822/rapidleech.git ./
+RUN git clone https://github.com/savmuv/Bakaleechv2.git ./
 
-# Moving file
+COPY ./config.php configs/
+
+RUN docker-php-ext-install mcrypt && \
+    chmod 777 -R files && \
+    chmod 777 -R rar && \
+    chmod 777 -R configs
+
 COPY ./ /var/www/html
 
-# Exposing
 EXPOSE  80

@@ -4,7 +4,7 @@ RUN apt-get update && \
 
 RUN git clone https://github.com/savmuv/Bakaleechv2.git ./
 
-ADD https://raw.githubusercontent.com/savmuv/Rapidleech-HRK/master/configs.php configs/
+ADD https://raw.githubusercontent.com/savmuv/Rapidleech-HRK/master/config.php configs/
 
 RUN docker-php-ext-install mcrypt && \
     chmod 777 -R files && \
